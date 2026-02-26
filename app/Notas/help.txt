@@ -1,0 +1,54 @@
+1. Adicionar no composer.json
+Vai resolver o problema dos problemas do codigo 
+        "format": [
+            "php vendor/bin/pint],
+Na linha de comandos corro o composer format.
+
+2. Instalar o https://getrector.com/ para fazer a identação do PHP de forma mais moderna e eficas.
+As configurações são no rector.php
+para por o rector mais laravel frendly existe este repo: https://github.com/driftingly/rector-laravel
+Na altura executei o comando composer require --dev driftingly/rector-laravel
+
+declare(strict_types=1);
+
+use Rector\Config\RectorConfig;
+use RectorLaravel\Set\LaravelSetList;
+
+return RectorConfig::configure()
+    ->withPaths([
+        __DIR__.'/app',
+        __DIR__.'/bootstrap',
+        __DIR__.'/config',
+        __DIR__.'/database',
+        __DIR__.'/resources',
+        __DIR__.'/routes',
+        __DIR__.'/tests',
+    ])
+    ->withSkip([
+        __DIR__.'/bootstrap/cache',
+        __DIR__.'/storage',
+        __DIR__.'/vendor',
+        __DIR__.'/resources/views',
+    ])
+    ->withPhpSets()
+    ->withSets([
+        LaravelSetList::LARAVEL_120,
+        LaravelSetList::LARAVEL_CODE_QUALITY,
+    ]);
+
+resultado, meter no format o rector e o pint:
+no composer.json
+    "scripts": {
+    ...
+        "format": [
+            "php vendor/bin/rector",
+            "php vendor/bin/pint"
+        ],
+        "rector": [ 
+            "php vendor/bin/rector"
+        ],
+3. https://www.coderabbit.ai/ 
+Para ajudar a validar o codigo antes de fazer commits ou deploys.
+
+4. instalar o laravel boost 
+https://github.com/laravel/boost
