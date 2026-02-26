@@ -47,8 +47,51 @@ no composer.json
         "rector": [ 
             "php vendor/bin/rector"
         ],
+        "pest": [
+             "php vendor/bin/pest" ],
 3. https://www.coderabbit.ai/ 
 Para ajudar a validar o codigo antes de fazer commits ou deploys.
 
 4. instalar o laravel boost 
 https://github.com/laravel/boost
+
+5. para criar um model com todas as dependencias
+php artisan make:model Idea --all
+
+6. no AppServiceProvider
+use Illuminate\Database\Eloquent\Model;
+    public function boot(): void
+    {
+        Model::unguard();
+        Model::shouldBeStrict();
+        Model::automaticallyEagerLoadRelationships();
+    }
+
+7. settings.json
+{
+    "php.validate.executablePath": "C:\\Users\\carlos.s.bicho\\.config\\herd\\bin\\php84\\php.exe",
+    "php.executablePath": "C:\\Users\\carlos.s.bicho\\.config\\herd\\bin\\php84\\php.exe",
+    "intelephense.environment.phpVersion": "8.4.0",
+    "intelephense.completion.insertUseDeclaration": true,
+    "intelephense.files.maxSize": 1000000,
+    "php.suggest.basic": false,
+    "files.associations": {
+        "*.blade.php": "blade"
+    },
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000,
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true
+    },
+    "[blade]": {
+        "editor.formatOnSave": false
+    },
+    "window.commandCenter": true
+}
+
+8. pest.php
+pest()->extend(Tests\TestCase::class)
+    ->use(Illuminate\Foundation\Testing\RefreshDatabase::class)
+    ->in('Feature', 'Unit');
+
