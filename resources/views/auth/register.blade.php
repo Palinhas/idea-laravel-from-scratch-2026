@@ -1,12 +1,15 @@
 <x-layout>
-    <div class="flex min-h-[calc(100dvh-4rem)] items-center justify-center px-4">
-        <div class="w-full max-w-md">
-            <div class="text-center">
-                <h1 class="text-3xl font-bold tracking-tight">Register now</h1>
-                <p class="text-muted-foreground mt-1">Subtitle goes here</p>
-            </div>
-        </div>
-    </div>
+  <x-form title="Register an account" description="Join us and share your ideas with the world!">
+      <form action="/register" method="post" class="mt-10 space-y-4">
+          @csrf
+
+          <x-form.field name="name" label="Name" />
+          <x-form.field type="email" name="email" label="Email" />
+          <x-form.field type="password" name="password" label="Password" />
+
+          <button type="submit" class="btn mt-2 h-10 w-full">Register</button>
+      </form>
+  </x-form>
 </x-layout>
 
 
