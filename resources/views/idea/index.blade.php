@@ -12,7 +12,6 @@
                 <span>{{ $statusCount->get($status->value) }}</span>
                 </a>
              @endforeach
-
         </div>
 
         <div class="mt-10 text-muted-foreground">
