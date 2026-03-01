@@ -6,13 +6,17 @@ button {
     background: var(--color-primary);
     border-radius: var(--radius-xl);
     color: var(--color-primary-foreground);
-    padding-inline: calc(var(--spacing) * 3);
+    padding: 0 calc(var(--spacing) * 3);
     font-size: var(--text-sm);
     font-weight: var(--font-weight-medium);
     cursor: pointer;
     height: calc(var(--spacing) * 8);
     line-height: calc(var(--spacing) * 8);
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: calc(var(--spacing) * 2);
+    border: none;
 }
 
 .btn.btn-outlined {
@@ -30,11 +34,6 @@ button {
     background: transparent;
 }
 
-.btn:has(> svg) {
-    display: flex;
-    align-items: center;
-    column-gap: calc(var(--spacing) * 2);
-}
 
 .btn:hover {
     background: color-mix(in srgb, black 10%, var(--color-primary));

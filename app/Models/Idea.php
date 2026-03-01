@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Collection;
 
 class Idea extends Model
 {
@@ -22,6 +23,20 @@ class Idea extends Model
     protected $attributes = [
         'status' => ideaStatus::PENDING,
     ];
+
+    public static function statusCounts(User $user): Collection
+    {
+
+        $statusCounts = $user->ideas()
+            ->selectRaw('status, count(*) as total')
+            ->groupBy('status')
+            ->pluck('total', 'status');
+
+        // Garante que todos os status apareçam no array
+        return collect(IdeaStatus::cases())
+            ->mapWithKeys(fn ($status) => [$status->value => $statusCounts[$status->value] ?? 0])
+            ->put('all', $statusCounts->sum());
+    }
 
     public function user(): BelongsTo
     {
