@@ -29,11 +29,14 @@
 	     aria-labelledby="modal-{{ $name }}-title"
 	     :aria-hidden="!show"
 	     tabindex="-1">
-		<x-card class="pointer-events-auto">
-			<div>
+		<x-card class="pointer-events-auto shadow-xl max-w-2xl w-full max-h-[80dvh] overflow-auto">
+			<div class="flex justify-between items-center">
 				<h2 id="modal-{{ $name }}-title" class="text-xl font-blod">{{ $title }}</h2>
+				<button @click="show = false" aria-label="Close modal">
+					<x-icons.close/>
+				</button>
 			</div>
-			<div>
+			<div class="mt-4">
 				{{ $slot }}
 			</div>
 		</x-card>
