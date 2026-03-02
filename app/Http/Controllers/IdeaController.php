@@ -19,12 +19,12 @@ class IdeaController extends Controller
 
         $status = $request->status;
 
-        if (! in_array($status, IdeaStatus::values())) {
+        if (!in_array($status, IdeaStatus::values())) {
             $status = null;
         }
 
         $ideas = $user->ideas()
-            ->when($request->status, fn ($query) => $query->where('status', $request->status))
+            ->when($request->status, fn($query) => $query->where('status', $request->status))
             ->get();
 
         return view('idea.index', [
@@ -80,6 +80,9 @@ class IdeaController extends Controller
      */
     public function destroy(Idea $idea)
     {
-        //
+        // autorização é feita no policy, então aqui só precisamos deletar a ideia
+        $idea->delete();
+
+        return redirect()->route('idea.index')->with('success', 'Idea deleted successfully.');
     }
 }
