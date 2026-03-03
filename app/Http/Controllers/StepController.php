@@ -56,7 +56,7 @@ class StepController extends Controller
 
         $step->update(['completed' => ! $step->completed]);
 
-        return back()->with('success', 'Idea updated successfully.');
+        return back()->with('success', 'idea updated successfully.');
     }
 
     /**

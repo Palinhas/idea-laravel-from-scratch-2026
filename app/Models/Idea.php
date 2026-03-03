@@ -18,7 +18,6 @@ class Idea extends Model
     protected $casts = [
         'links' => AsArrayObject::class,
         'status' => IdeaStatus::class,
-
     ];
 
     protected $attributes = [
@@ -36,7 +35,7 @@ class Idea extends Model
 
         // Garante que todos os status apareçam no array
         return collect(IdeaStatus::cases())
-            ->mapWithKeys(fn($status) => [$status->value => $statusCounts[$status->value] ?? 0])
+            ->mapWithKeys(fn ($status) => [$status->value => $statusCounts[$status->value] ?? 0])
             ->put('all', $statusCounts->sum());
     }
 

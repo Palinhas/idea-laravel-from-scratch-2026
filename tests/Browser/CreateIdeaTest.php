@@ -7,7 +7,7 @@ it('create idea', function () {
 
     visit('/ideas')
         ->click('@create-idea-button')
-        ->fill('#title', 'My First Idea Pest Test')
+        ->fill('#title', 'My First idea Pest Test')
         ->click('@idea-status-completed')
         ->fill('#description', 'This is my first idea description Test by Pest')
         ->fill('#new-link', 'https://google.com')
@@ -18,7 +18,7 @@ it('create idea', function () {
         ->assertPathIs('/ideas');
 
     expect($user->ideas()->first())->toMatchArray([
-        'title' => 'My First Idea Pest Test',
+        'title' => 'My First idea Pest Test',
         'status' => 'completed', // Completed status
         'description' => 'This is my first idea description Test by Pest',
         'links' => ['https://google.com', 'https://laravel.com'], // Links stored as JSON

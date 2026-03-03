@@ -53,7 +53,7 @@ class IdeaController extends Controller
         $idea->update(['image_path' => $imagePath]);
 
         return to_route('idea.index')
-            ->with('success', 'Idea created successfully.');
+            ->with('success', 'idea created successfully.');
     }
 
     /**
@@ -90,6 +90,6 @@ class IdeaController extends Controller
         // autorização é feita no policy, então aqui só precisamos deletar a ideia
         $idea->delete();
 
-        return to_route('idea.index')->with('success', 'Idea deleted successfully.');
+        return to_route('idea.index')->with('success', 'idea deleted successfully.');
     }
 }
