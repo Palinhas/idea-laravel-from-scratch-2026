@@ -2,8 +2,8 @@
     <div class="max-w-7xl mx-auto h-16 flex items-center justify-between">
         <div>
             {{--  Logo --}}
-            <a href="/" >
-                <img class="" src="./images/logo.svg" alt="Idea logo" width="100">
+            <a href="/">
+                <img class="" src="{{ asset('images/logo.svg') }}" alt="Idea logo" width="100">
             </a>
         </div>
 
@@ -12,7 +12,7 @@
             @auth
                 <form action="/logout" method="post">
                     @csrf
-                    <button type="submit" class=""  data-test="logout-button">Logout</button>
+                    <button type="submit" class="" data-test="logout-button">Logout</button>
                 </form>
 
             @endauth

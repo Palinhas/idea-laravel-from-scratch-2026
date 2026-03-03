@@ -31,6 +31,12 @@
             <div class="grid md:grid-cols-2 gap-6">
                 @forelse ($ideas as $idea)
                     <x-card href="{{ route('idea.show', $idea )}}">
+                        @if($idea->image_path)
+                            <div class="mb-4 -mx-4 -mt-4 rounded-lg overflow-hidden">
+                                <img src="{{ asset('storage/' . $idea->image_path) }}"
+                                     alt="image" class="w-full h-auto object-cover"/>
+                            </div>
+                        @endif
                         <h3 class="text-foreground text-lg">{{ $idea->title }}</h3>
                         <div class="mt-2">
                             <x-idea.status-label status="{{ $idea->status }}">
@@ -56,11 +62,15 @@
                            newStep: '',
                            steps: []
                           }"
-                  method="POST" action="{{ route('idea.store') }}">
+                  method="POST"
+                  action="{{ route('idea.store') }}"
+                  enctype="multipart/form-data">
                 @csrf
                 <div class="space-y-6">
+                    {{-- Title--}}
                     <x-form.field name="title" label="Title" placeholder="Enter an idea for a title"
                                   autofocus required/>
+                    {{-- Status --}}
                     <div class="space-y-2">
                         <label for="status" class="label">Status</label>
                         <div class="flex gap-x-3">
@@ -77,9 +87,15 @@
                         </div>
                         <x-form.error name="status"/>
                     </div>
-
+                    {{--Description--}}
                     <x-form.field name="description" label="Description" type="textarea"
                                   placeholder="Describe your idea..."/>
+                    {{-- Image --}}
+                    <div class="space-y-2">
+                        <label for="image" class="label">Featured Image</label>
+                        <input type="file" name="image" id="image" accept="image/*"/>
+                        <x-form.error name="image"/>
+                    </div>
                     {{-- Steps--}}
                     <div>
                         <fieldset class="space-y-3">
