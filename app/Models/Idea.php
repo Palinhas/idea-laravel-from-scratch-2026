@@ -22,6 +22,7 @@ class Idea extends Model
 
     protected $attributes = [
         'status' => ideaStatus::PENDING,
+        'links' => '[]',
     ];
 
     public static function statusCounts(User $user): Collection
@@ -34,7 +35,7 @@ class Idea extends Model
 
         // Garante que todos os status apareçam no array
         return collect(IdeaStatus::cases())
-            ->mapWithKeys(fn ($status) => [$status->value => $statusCounts[$status->value] ?? 0])
+            ->mapWithKeys(fn($status) => [$status->value => $statusCounts[$status->value] ?? 0])
             ->put('all', $statusCounts->sum());
     }
 
