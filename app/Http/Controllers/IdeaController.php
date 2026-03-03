@@ -21,7 +21,7 @@ class IdeaController extends Controller
         $status = $request->status;
 
         $ideas = $user->ideas()
-            ->when(in_array($status, IdeaStatus::values()), fn($query) => $query->where('status', $status))
+            ->when(in_array($status, IdeaStatus::values()), fn ($query) => $query->where('status', $status))
             ->latest()->get();
 
         return view('idea.index', [
@@ -46,7 +46,7 @@ class IdeaController extends Controller
 
         $idea = Auth::user()->ideas()->create($request->safe()->except(['steps', 'image']));
         $idea->steps()->createMany(
-            collect($request->steps)->map(fn($step) => ['description' => $step, 'completed' => false])
+            collect($request->steps)->map(fn ($step) => ['description' => $step, 'completed' => false])
         );
 
         $imagePath = $request->image->store('ideas', 'public');
@@ -90,6 +90,6 @@ class IdeaController extends Controller
         // autorização é feita no policy, então aqui só precisamos deletar a ideia
         $idea->delete();
 
-        return redirect()->route('idea.index')->with('success', 'Idea deleted successfully.');
+        return to_route('idea.index')->with('success', 'Idea deleted successfully.');
     }
 }

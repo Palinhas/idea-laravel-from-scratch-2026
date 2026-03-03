@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Idea;
 use App\Models\User;
 
 it('create idea', function () {
