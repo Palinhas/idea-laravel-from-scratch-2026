@@ -39,7 +39,7 @@
                         @endif
                         <h3 class="text-foreground text-lg">{{ $idea->title }}</h3>
                         <div class="mt-2">
-                            <x-idea.status-label status="{{ $idea->status }}">
+                            <x-idea.status-label status="{{ $idea->status->value }}">
                                 {{ $idea->status->label( ) }}
                             </x-idea.status-label>
                         </div>
