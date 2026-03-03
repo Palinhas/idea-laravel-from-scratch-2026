@@ -57,7 +57,17 @@
             "php vendor/bin/rector"
         ],
         "pest": [
-             "php vendor/bin/pest" ],
+            "php vendor/bin/pest --colors=always"
+        ],
+        "pest:browser": [
+            "php vendor/bin/pest tests/Browser --colors=always"
+        ],
+        "pest:unit": [
+            "php vendor/bin/pest tests/Unit --colors=always"
+        ],
+        "pest:feature": [
+            "php vendor/bin/pest tests/Feature --colors=always"
+        ],
         "dev": [
             "Composer\\Config::disableProcessTimeout",
             "npx concurrently -c \"#93c5fd,#c4b5fd,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"npm run dev\" --names='server,queue,vite'"

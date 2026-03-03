@@ -11,6 +11,10 @@ it('create idea', function () {
         ->fill('#title', 'My First Idea Pest Test')
         ->click('@idea-status-completed')
         ->fill('#description', 'This is my first idea description Test by Pest')
+        ->fill('#new-link', 'https://google.com')
+        ->click('@submit-new-link-button')
+        ->fill('#new-link', 'https://laravel.com')
+        ->click('@submit-new-link-button')
         ->click('@button-create-idea')
         ->assertPathIs('/ideas');
 
@@ -18,6 +22,7 @@ it('create idea', function () {
         'title' => 'My First Idea Pest Test',
         'status' => 'completed', // Completed status
         'description' => 'This is my first idea description Test by Pest',
+        'links' => ['https://google.com', 'https://laravel.com'], // Links stored as JSON
     ]);
 
 });
