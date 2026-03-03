@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\ideaStatus;
+use App\IdeaStatus;
 use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -17,11 +17,11 @@ class Idea extends Model
 
     protected $casts = [
         'links' => AsArrayObject::class,
-        'status' => ideaStatus::class,
+        'status' => IdeaStatus::class,
     ];
 
     protected $attributes = [
-        'status' => ideaStatus::PENDING,
+        'status' => IdeaStatus::PENDING,
         'links' => '[]',
     ];
 
@@ -35,7 +35,7 @@ class Idea extends Model
 
         // Garante que todos os status apareçam no array
         return collect(IdeaStatus::cases())
-            ->mapWithKeys(fn ($status) => [$status->value => $statusCounts[$status->value] ?? 0])
+            ->mapWithKeys(fn($status) => [$status->value => $statusCounts[$status->value] ?? 0])
             ->put('all', $statusCounts->sum());
     }
 
