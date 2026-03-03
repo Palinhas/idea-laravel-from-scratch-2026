@@ -12,12 +12,15 @@ This application is a Laravel application and its main Laravel ecosystems packag
 - php - 8.4.16
 - laravel/framework (LARAVEL) - v12
 - laravel/prompts (PROMPTS) - v0
+- laravel/boost (BOOST) - v2
 - laravel/mcp (MCP) - v0
+- laravel/pail (PAIL) - v1
 - laravel/pint (PINT) - v1
 - laravel/sail (SAIL) - v1
 - pestphp/pest (PEST) - v4
 - phpunit/phpunit (PHPUNIT) - v12
 - rector/rector (RECTOR) - v2
+- alpinejs (ALPINEJS) - v3
 - tailwindcss (TAILWINDCSS) - v4
 
 ## Skills Activation
@@ -131,6 +134,13 @@ protected function isAccessible(User $user, ?string $path = null): bool
 
 - Add useful array shape type definitions when appropriate.
 
+=== herd rules ===
+
+# Laravel Herd
+
+- The application is served by Laravel Herd and will be available at: `https?://[kebab-case-project-dir].test`. Use the `get-absolute-url` tool to generate valid URLs for the user.
+- You must not run any commands to make the site available via HTTP(S). It is always available through Laravel Herd.
+
 === laravel/core rules ===
 
 # Do Things the Laravel Way
@@ -215,7 +225,7 @@ protected function isAccessible(User $user, ?string $path = null): bool
 
 # Laravel Pint Code Formatter
 
-- You must run `vendor/bin/pint --dirty --format agent` before finalizing changes to ensure your code matches the project's expected style.
+- If you have modified any PHP files, you must run `vendor/bin/pint --dirty --format agent` before finalizing changes to ensure your code matches the project's expected style.
 - Do not run `vendor/bin/pint --test --format agent`, simply run `vendor/bin/pint --format agent` to fix any formatting issues.
 
 === pest/core rules ===
@@ -235,4 +245,5 @@ protected function isAccessible(User $user, ?string $path = null): bool
 - Always use existing Tailwind conventions; check project patterns before adding new ones.
 - IMPORTANT: Always use `search-docs` tool for version-specific Tailwind CSS documentation and updated code examples. Never rely on training data.
 - IMPORTANT: Activate `tailwindcss-development` every time you're working with a Tailwind CSS or styling-related task.
+
 </laravel-boost-guidelines>

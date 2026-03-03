@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1a40339aa20e73455a82edb68e8a1b3a",
+    "content-hash": "6d3ee0e544b3ba04215b752cdd8c7d04",
     "packages": [
         {
             "name": "brick/math",
@@ -7410,21 +7410,22 @@
         },
         {
             "name": "driftingly/rector-laravel",
-            "version": "2.1.2",
+            "version": "2.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/driftingly/rector-laravel.git",
-                "reference": "d7cd932cff9e398a43393f1a1a63b27d574e35ef"
+                "reference": "aee9d4a1d489e7ec484fc79f33137f8ee051b3f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/driftingly/rector-laravel/zipball/d7cd932cff9e398a43393f1a1a63b27d574e35ef",
-                "reference": "d7cd932cff9e398a43393f1a1a63b27d574e35ef",
+                "url": "https://api.github.com/repos/driftingly/rector-laravel/zipball/aee9d4a1d489e7ec484fc79f33137f8ee051b3f7",
+                "reference": "aee9d4a1d489e7ec484fc79f33137f8ee051b3f7",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.4 || ^8.0",
-                "rector/rector": "^2.2.7"
+                "rector/rector": "^2.2.7",
+                "webmozart/assert": "^1.11"
             },
             "type": "rector-extension",
             "autoload": {
@@ -7439,9 +7440,9 @@
             "description": "Rector upgrades rules for Laravel Framework",
             "support": {
                 "issues": "https://github.com/driftingly/rector-laravel/issues",
-                "source": "https://github.com/driftingly/rector-laravel/tree/2.1.2"
+                "source": "https://github.com/driftingly/rector-laravel/tree/2.1.9"
             },
-            "time": "2025-10-31T21:56:58+00:00"
+            "time": "2025-12-25T23:31:36+00:00"
         },
         {
             "name": "fakerphp/faker",
@@ -7809,16 +7810,16 @@
         },
         {
             "name": "laravel/boost",
-            "version": "v2.1.2",
+            "version": "v2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/boost.git",
-                "reference": "81ecf79e82c979efd92afaeac012605cc7b2f31f"
+                "reference": "e27f1616177377fef95296620530c44a7dda4df9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/boost/zipball/81ecf79e82c979efd92afaeac012605cc7b2f31f",
-                "reference": "81ecf79e82c979efd92afaeac012605cc7b2f31f",
+                "url": "https://api.github.com/repos/laravel/boost/zipball/e27f1616177377fef95296620530c44a7dda4df9",
+                "reference": "e27f1616177377fef95296620530c44a7dda4df9",
                 "shasum": ""
             },
             "require": {
@@ -7829,7 +7830,7 @@
                 "illuminate/support": "^11.45.3|^12.41.1",
                 "laravel/mcp": "^0.5.1",
                 "laravel/prompts": "^0.3.10",
-                "laravel/roster": "^0.2.9",
+                "laravel/roster": "^0.5.0",
                 "php": "^8.2"
             },
             "require-dev": {
@@ -7871,7 +7872,7 @@
                 "issues": "https://github.com/laravel/boost/issues",
                 "source": "https://github.com/laravel/boost"
             },
-            "time": "2026-02-10T17:40:45+00:00"
+            "time": "2026-02-25T16:07:36+00:00"
         },
         {
             "name": "laravel/mcp",
@@ -8095,31 +8096,31 @@
         },
         {
             "name": "laravel/roster",
-            "version": "v0.2.9",
+            "version": "v0.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/roster.git",
-                "reference": "82bbd0e2de614906811aebdf16b4305956816fa6"
+                "reference": "56904a78f4d7360c1c490ced7deeebf9aecb8c0e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/roster/zipball/82bbd0e2de614906811aebdf16b4305956816fa6",
-                "reference": "82bbd0e2de614906811aebdf16b4305956816fa6",
+                "url": "https://api.github.com/repos/laravel/roster/zipball/56904a78f4d7360c1c490ced7deeebf9aecb8c0e",
+                "reference": "56904a78f4d7360c1c490ced7deeebf9aecb8c0e",
                 "shasum": ""
             },
             "require": {
-                "illuminate/console": "^10.0|^11.0|^12.0",
-                "illuminate/contracts": "^10.0|^11.0|^12.0",
-                "illuminate/routing": "^10.0|^11.0|^12.0",
-                "illuminate/support": "^10.0|^11.0|^12.0",
-                "php": "^8.1|^8.2",
-                "symfony/yaml": "^6.4|^7.2"
+                "illuminate/console": "^11.0|^12.0|^13.0",
+                "illuminate/contracts": "^11.0|^12.0|^13.0",
+                "illuminate/routing": "^11.0|^12.0|^13.0",
+                "illuminate/support": "^11.0|^12.0|^13.0",
+                "php": "^8.2",
+                "symfony/yaml": "^7.2|^8.0"
             },
             "require-dev": {
                 "laravel/pint": "^1.14",
                 "mockery/mockery": "^1.6",
-                "orchestra/testbench": "^8.22.0|^9.0|^10.0",
-                "pestphp/pest": "^2.0|^3.0",
+                "orchestra/testbench": "^9.0|^10.0|^11.0",
+                "pestphp/pest": "^3.0|^4.1",
                 "phpstan/phpstan": "^2.0"
             },
             "type": "library",
@@ -8152,7 +8153,7 @@
                 "issues": "https://github.com/laravel/roster/issues",
                 "source": "https://github.com/laravel/roster"
             },
-            "time": "2025-10-20T09:56:46+00:00"
+            "time": "2026-02-17T17:33:35+00:00"
         },
         {
             "name": "laravel/sail",
@@ -9258,16 +9259,16 @@
         },
         {
             "name": "phpdocumentor/reflection-docblock",
-            "version": "6.0.1",
+            "version": "6.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
-                "reference": "2f5cbed597cb261d1ea458f3da3a9ad32e670b1e"
+                "reference": "897b5986ece6b4f9d8413fea345c7d49c757d6bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/2f5cbed597cb261d1ea458f3da3a9ad32e670b1e",
-                "reference": "2f5cbed597cb261d1ea458f3da3a9ad32e670b1e",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/897b5986ece6b4f9d8413fea345c7d49c757d6bf",
+                "reference": "897b5986ece6b4f9d8413fea345c7d49c757d6bf",
                 "shasum": ""
             },
             "require": {
@@ -9317,9 +9318,9 @@
             "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
             "support": {
                 "issues": "https://github.com/phpDocumentor/ReflectionDocBlock/issues",
-                "source": "https://github.com/phpDocumentor/ReflectionDocBlock/tree/6.0.1"
+                "source": "https://github.com/phpDocumentor/ReflectionDocBlock/tree/6.0.2"
             },
-            "time": "2026-01-20T15:30:42+00:00"
+            "time": "2026-03-01T18:43:49+00:00"
         },
         {
             "name": "phpdocumentor/type-resolver",
@@ -11014,28 +11015,27 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v7.4.6",
+            "version": "v8.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "58751048de17bae71c5aa0d13cb19d79bca26391"
+                "reference": "5f006c50a981e1630bbb70ad409c5d85f9a716e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/58751048de17bae71c5aa0d13cb19d79bca26391",
-                "reference": "58751048de17bae71c5aa0d13cb19d79bca26391",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/5f006c50a981e1630bbb70ad409c5d85f9a716e0",
+                "reference": "5f006c50a981e1630bbb70ad409c5d85f9a716e0",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.2",
-                "symfony/deprecation-contracts": "^2.5|^3",
+                "php": ">=8.4",
                 "symfony/polyfill-ctype": "^1.8"
             },
             "conflict": {
-                "symfony/console": "<6.4"
+                "symfony/console": "<7.4"
             },
             "require-dev": {
-                "symfony/console": "^6.4|^7.0|^8.0"
+                "symfony/console": "^7.4|^8.0"
             },
             "bin": [
                 "Resources/bin/yaml-lint"
@@ -11066,7 +11066,7 @@
             "description": "Loads and dumps YAML files",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/yaml/tree/v7.4.6"
+                "source": "https://github.com/symfony/yaml/tree/v8.0.6"
             },
             "funding": [
                 {
@@ -11086,7 +11086,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-02-09T09:33:46+00:00"
+            "time": "2026-02-09T10:14:57+00:00"
         },
         {
             "name": "ta-tikoma/phpunit-architecture-test",
@@ -11199,23 +11199,23 @@
         },
         {
             "name": "webmozart/assert",
-            "version": "2.1.6",
+            "version": "1.12.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webmozarts/assert.git",
-                "reference": "ff31ad6efc62e66e518fbab1cde3453d389bcdc8"
+                "reference": "9be6926d8b485f55b9229203f962b51ed377ba68"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozarts/assert/zipball/ff31ad6efc62e66e518fbab1cde3453d389bcdc8",
-                "reference": "ff31ad6efc62e66e518fbab1cde3453d389bcdc8",
+                "url": "https://api.github.com/repos/webmozarts/assert/zipball/9be6926d8b485f55b9229203f962b51ed377ba68",
+                "reference": "9be6926d8b485f55b9229203f962b51ed377ba68",
                 "shasum": ""
             },
             "require": {
                 "ext-ctype": "*",
                 "ext-date": "*",
                 "ext-filter": "*",
-                "php": "^8.2"
+                "php": "^7.2 || ^8.0"
             },
             "suggest": {
                 "ext-intl": "",
@@ -11225,7 +11225,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-feature/2-0": "2.0-dev"
+                    "dev-master": "1.10-dev"
                 }
             },
             "autoload": {
@@ -11241,10 +11241,6 @@
                 {
                     "name": "Bernhard Schussek",
                     "email": "bschussek@gmail.com"
-                },
-                {
-                    "name": "Woody Gilk",
-                    "email": "woody.gilk@gmail.com"
                 }
             ],
             "description": "Assertions to validate method input/output with nice error messages.",
@@ -11255,9 +11251,9 @@
             ],
             "support": {
                 "issues": "https://github.com/webmozarts/assert/issues",
-                "source": "https://github.com/webmozarts/assert/tree/2.1.6"
+                "source": "https://github.com/webmozarts/assert/tree/1.12.1"
             },
-            "time": "2026-02-27T10:28:38+00:00"
+            "time": "2025-10-29T15:56:20+00:00"
         }
     ],
     "aliases": [],
@@ -11266,7 +11262,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^8.2"
+        "php": "^8.4"
     },
     "platform-dev": {},
     "plugin-api-version": "2.9.0"

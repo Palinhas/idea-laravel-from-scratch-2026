@@ -7,7 +7,6 @@ use App\Http\Requests\UpdateIdeaRequest;
 use App\IdeaStatus;
 use App\Models\Idea;
 use Illuminate\Http\Request;
-use RectorPrefix202602\Illuminate\Container\Attributes\Auth;
 
 class IdeaController extends Controller
 {
