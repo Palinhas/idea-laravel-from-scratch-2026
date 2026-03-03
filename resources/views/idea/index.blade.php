@@ -52,7 +52,10 @@
             <form x-data="{
                            status: 'pending',
                            newLink: '',
-                           links: []}"
+                           links: [],
+                           newStep: '',
+                           steps: []
+                          }"
                   method="POST" action="{{ route('idea.store') }}">
                 @csrf
                 <div class="space-y-6">
@@ -77,7 +80,43 @@
 
                     <x-form.field name="description" label="Description" type="textarea"
                                   placeholder="Describe your idea..."/>
+                    {{-- Steps--}}
+                    <div>
+                        <fieldset class="space-y-3">
+                            <legend class="label">Actionable Steps</legend>
+                            <template x-for="(step, index) in steps" :key="`${step}-${index}`">
+                                <div class="flex gap-x-2 items-center">
+                                    <input class="input" name="steps[]" :value="step">
+                                    <button type="button"
+                                            @click="steps.splice(index, 1)"
+                                            aria-label="Remove step Button"
+                                            class="form-muted-icon">
+                                        <x-icons.close/>
+                                    </button>
+                                </div>
+                            </template>
+                            <div class="flex gap-x-2 items-center">
+                                <input x-model="newStep"
+                                       id="new-step"
+                                       data-test="new-step"
+                                       autocomplete="url"
+                                       placeholder="What needs to be done?"
+                                       class="input flex-1"
+                                       spellcheck="false"/>
 
+                                <button type="button"
+                                        @click="steps.push(newStep.trim()); newStep = '';"
+                                        :disabled="newStep.trim().length === 0"
+                                        data-test="submit-new-step-button"
+                                        aria-label="Add new Step Button"
+                                        class="form-muted-icon">
+                                    <x-icons.close class="rotate-45"/>
+                                </button>
+                            </div>
+                            <x-form.error name="steps"/>
+                        </fieldset>
+                    </div>
+                    {{--Links--}}
                     <div>
                         <fieldset class="space-y-3">
                             <legend class="label">Links</legend>
@@ -114,7 +153,6 @@
                             <x-form.error name="Links"/>
                         </fieldset>
                     </div>
-
                     <div class="flex justify-end gap-x-5">
                         <button type="button"
                                 @click="$dispatch('close-modal', 'create-idea')"

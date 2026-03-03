@@ -6,6 +6,7 @@ use App\Http\Requests\StoreIdeaRequest;
 use App\Http\Requests\UpdateIdeaRequest;
 use App\IdeaStatus;
 use App\Models\Idea;
+use Auth;
 use Illuminate\Http\Request;
 
 class IdeaController extends Controller
@@ -42,8 +43,10 @@ class IdeaController extends Controller
      */
     public function store(StoreIdeaRequest $request)
     {
-        
-        auth()->user()->ideas()->create($request->validated());
+        $idea = Auth::user()->ideas()->create($request->safe()->except('steps'));
+        $idea->steps()->createMany(
+            collect($request->steps)->map(fn($step) => ['description' => $step, 'completed' => false])
+        );
         return to_route('idea.index')
             ->with('success', 'Idea created successfully.');
     }

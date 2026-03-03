@@ -53,7 +53,10 @@ class StepController extends Controller
      */
     public function update(UpdateStepRequest $request, Step $step)
     {
-        //
+        
+        $step->update(['completed' => !$step->completed]);
+
+        return back()->with('success', 'Idea updated successfully.');
     }
 
     /**
