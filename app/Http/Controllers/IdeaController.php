@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateIdeaRequest;
 use App\IdeaStatus;
 use App\Models\Idea;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Throwable;
 
 class IdeaController extends Controller
@@ -17,12 +18,13 @@ class IdeaController extends Controller
      */
     public function index(Request $request)
     {
+
         $user = auth()->user();
 
         $status = $request->status;
 
         $ideas = $user->ideas()
-            ->when(in_array($status, IdeaStatus::values()), fn ($query) => $query->where('status', $status))
+            ->when(in_array($status, IdeaStatus::values()), fn($query) => $query->where('status', $status))
             ->latest()->get();
 
         return view('idea.index', [
@@ -36,7 +38,7 @@ class IdeaController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -58,6 +60,7 @@ class IdeaController extends Controller
      */
     public function show(Idea $idea)
     {
+        Gate::authorize('workWith', $idea);
         return view('idea.show', [
             'idea' => $idea,
         ]);
@@ -68,7 +71,8 @@ class IdeaController extends Controller
      */
     public function edit(Idea $idea)
     {
-        //
+        Gate::authorize('workWith', $idea);
+
     }
 
     /**
@@ -76,7 +80,8 @@ class IdeaController extends Controller
      */
     public function update(UpdateIdeaRequest $request, Idea $idea)
     {
-        //
+        Gate::authorize('workWith', $idea);
+
     }
 
     /**
@@ -85,6 +90,7 @@ class IdeaController extends Controller
     public function destroy(Idea $idea)
     {
         // autorização é feita no policy, então aqui só precisamos deletar a ideia
+        Gate::authorize('workWith', $idea);
         $idea->delete();
 
         return to_route('idea.index')->with('success', 'idea deleted successfully.');

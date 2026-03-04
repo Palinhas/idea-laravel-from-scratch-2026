@@ -64,7 +64,8 @@
                           }"
                   method="POST"
                   action="{{ route('idea.store') }}"
-                  enctype="multipart/form-data">
+                  {{--                  enctype="multipart/form-data"--}}
+                  x-bind:enctype="image ? 'multipart/form-data' : false">
                 @csrf
                 <div class="space-y-6">
                     {{-- Title--}}

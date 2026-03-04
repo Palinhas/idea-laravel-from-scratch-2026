@@ -34,8 +34,7 @@ class CreateIdea
             $idea = $this->user->ideas()->create($data);
 
             $steps = collect($attributes['steps'] ?? [])
-                ->map(fn($step) => ['description' => $step, 'completed' => false])
-                ->all();
+                ->map(fn($step) => ['description' => $step, 'completed' => false]);
 
             $idea->steps()->createMany($steps);
 
