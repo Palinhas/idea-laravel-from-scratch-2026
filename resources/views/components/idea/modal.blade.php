@@ -6,7 +6,7 @@
                    newLink: '',
                    links: @js(old('links', $idea->links ?? [])),
                    newStep: '',
-                   steps: @js(old('steps', $idea->steps->map(fn($step) => $step->description)))
+                   steps: @js(old('steps', $idea->steps->map->only(['id', 'description', 'completed']))),
                   }"
           method="POST"
           action="{{ $idea->exists ? route('idea.update', $idea) : route('idea.store') }}"
@@ -63,9 +63,11 @@
             <div>
                 <fieldset class="space-y-3">
                     <legend class="label">Actionable Steps</legend>
-                    <template x-for="(step, index) in steps" :key="`${step}-${index}`">
+                    <template x-for="(step, index) in steps" :key="step.id || index">
                         <div class="flex gap-x-2 items-center">
-                            <input class="input" name="steps[]" :value="step">
+                            <input class="input" :name="`steps[${index}][description]`" x-model="step.description">
+                            <input type="hidden" :name="`steps[${index}][completed]`"
+                                   x-model="step.completed ? '1': '0'" readonly>
                             <button type="button"
                                     @click="steps.splice(index, 1)"
                                     aria-label="Remove step Button"
@@ -84,7 +86,10 @@
                                spellcheck="false"/>
 
                         <button type="button"
-                                @click="steps.push(newStep.trim()); newStep = '';"
+                                @click="
+                                steps.push({description: newStep.trim(), completed: false});
+                                newStep = '';
+                                "
                                 :disabled="newStep.trim().length === 0"
                                 data-test="submit-new-step-button"
                                 aria-label="Add new Step Button"

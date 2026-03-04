@@ -2,26 +2,21 @@
 
 namespace App\Actions;
 
+use App\Models\Idea;
 use App\Models\User;
 use Illuminate\Container\Attributes\CurrentUser;
 use Illuminate\Support\Facades\DB;
 use Throwable;
 
-class CreateIdea
+class UpdateIdea
 {
-
-    public function __construct(#[CurrentUser] protected User $user)
-    {
-
-    }
 
 
     /**
      * @throws Throwable
      */
-    public function handle(array $attributes): void
+    public function handle(array $attributes, Idea $idea): void
     {
-
         $data = collect($attributes)->only([
             'title', 'description', 'status', 'links',
         ])->toArray();
@@ -30,13 +25,16 @@ class CreateIdea
             $data['image_path'] = $attributes['image']->store('ideas', 'public');
         }
 
-        DB::transaction(function () use ($data, $attributes) {
-            $idea = $this->user->ideas()->create($data);
+        DB::transaction(function () use ($data, $attributes, $idea) {
+            $idea->update($data);
+
+            $idea->steps()->delete();
+            $steps = collect($attributes['steps'] ?? []);
 
 //            $steps = collect($attributes['steps'] ?? [])
 //                ->map(fn($step) => ['description' => $step, 'completed' => false]);
-
-            $idea->steps()->createMany($attributes['steps'] ?? []);
+//
+            $idea->steps()->createMany($steps);
 
         });
 
