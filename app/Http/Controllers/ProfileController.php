@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Notifications\EmailChanged;
 use Auth;
 use Illuminate\Http\Request;
-
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password;
 use Notification;
@@ -50,7 +49,7 @@ class ProfileController extends Controller
     public function edit()
     {
         return view('profile.edit', [
-            'user' => Auth::user()
+            'user' => Auth::user(),
         ]);
     }
 
@@ -80,7 +79,7 @@ class ProfileController extends Controller
             Notification::route('mail', $originalEmail)->notify(new EmailChanged($user, $originalEmail));
         }
 
-        return redirect()->route('profile.edit')->with('success', 'Profile updated successfully.');
+        return to_route('profile.edit')->with('success', 'Profile updated successfully.');
     }
 
     /**

@@ -2,7 +2,6 @@
 
 use App\Models\User;
 use App\Notifications\EmailChanged;
-use Illuminate\Auth\Notifications\VerifyEmail;
 
 it('require authentication', function () {
     visit(route('profile.edit'))->assertPathIs('/login');
@@ -24,24 +23,22 @@ it('edit profile', function () {
 });
 
 it(
-/**
- * @throws Exception
- */
+    /**
+     * @throws Exception
+     */
     'notifies the original email if change', function () {
-    $user = User::factory()->create();
-    $this->actingAs($user);
+        $user = User::factory()->create();
+        $this->actingAs($user);
 
-    Notification::fake();
+        Notification::fake();
 
-    $originalEmail = $user->email;
+        $originalEmail = $user->email;
 
-    visit(route('profile.edit'))
-        ->assertValue('email', $user->email)
-        ->fill('email', 'test@email.com')
-        ->click('Update Account')
-        ->assertSee('Profile updated successfully.');
+        visit(route('profile.edit'))
+            ->assertValue('email', $user->email)
+            ->fill('email', 'test@email.com')
+            ->click('Update Account')
+            ->assertSee('Profile updated successfully.');
 
-    Notification::assertSentOnDemand(EmailChanged::class, function (EmailChanged $notification, $routes, $notifiable) use ($originalEmail) {
-        return $notifiable->routes['mail'] === $originalEmail;
+        Notification::assertSentOnDemand(EmailChanged::class, fn (EmailChanged $notification, $routes, $notifiable) => $notifiable->routes['mail'] === $originalEmail);
     });
-});

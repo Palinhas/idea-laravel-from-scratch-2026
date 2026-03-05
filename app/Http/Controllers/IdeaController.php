@@ -24,7 +24,7 @@ class IdeaController extends Controller
         $status = $request->status;
 
         $ideas = $user->ideas()
-            ->when(in_array($status, IdeaStatus::values()), fn($query) => $query->where('status', $status))
+            ->when(in_array($status, IdeaStatus::values()), fn ($query) => $query->where('status', $status))
             ->latest()->get();
 
         return view('idea.index', [
@@ -36,10 +36,7 @@ class IdeaController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-
-    }
+    public function create() {}
 
     /**
      * Store a newly created resource in storage.
@@ -61,6 +58,7 @@ class IdeaController extends Controller
     public function show(Idea $idea)
     {
         Gate::authorize('workWith', $idea);
+
         return view('idea.show', [
             'idea' => $idea,
         ]);
@@ -77,6 +75,7 @@ class IdeaController extends Controller
 
     /**
      * Update the specified resource in storage.
+     *
      * @throws Throwable
      */
     public function update(IdeaRequest $request, Idea $idea, UpdateIdea $action)

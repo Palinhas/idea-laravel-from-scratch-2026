@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Idea;
 use App\Models\User;
 
 it('create idea', function () {
@@ -18,8 +17,7 @@ it('create idea', function () {
         ->click('@button-create-idea')
         ->assertPathIs('/ideas');
 
-
-    $idea = $user->ideas();
+    $idea = $user->ideas()->first();
 
     expect($idea)
         ->not->toBeNull()
@@ -32,4 +30,3 @@ it('create idea', function () {
         ->and($idea->steps)->toHaveCount(1);
 
 });
-

@@ -3,15 +3,11 @@
 namespace App\Actions;
 
 use App\Models\Idea;
-use App\Models\User;
-use Illuminate\Container\Attributes\CurrentUser;
 use Illuminate\Support\Facades\DB;
 use Throwable;
 
 class UpdateIdea
 {
-
-
     /**
      * @throws Throwable
      */
@@ -31,9 +27,9 @@ class UpdateIdea
             $idea->steps()->delete();
             $steps = collect($attributes['steps'] ?? []);
 
-//            $steps = collect($attributes['steps'] ?? [])
-//                ->map(fn($step) => ['description' => $step, 'completed' => false]);
-//
+            //            $steps = collect($attributes['steps'] ?? [])
+            //                ->map(fn($step) => ['description' => $step, 'completed' => false]);
+            //
             $idea->steps()->createMany($steps);
 
         });

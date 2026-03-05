@@ -9,12 +9,9 @@ use Throwable;
 
 class CreateIdea
 {
-
     public function __construct(#[CurrentUser] protected User $user)
     {
-
     }
-
 
     /**
      * @throws Throwable
@@ -33,8 +30,8 @@ class CreateIdea
         DB::transaction(function () use ($data, $attributes) {
             $idea = $this->user->ideas()->create($data);
 
-//            $steps = collect($attributes['steps'] ?? [])
-//                ->map(fn($step) => ['description' => $step, 'completed' => false]);
+            //            $steps = collect($attributes['steps'] ?? [])
+            //                ->map(fn($step) => ['description' => $step, 'completed' => false]);
 
             $idea->steps()->createMany($attributes['steps'] ?? []);
 

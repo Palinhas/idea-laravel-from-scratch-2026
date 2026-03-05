@@ -19,7 +19,7 @@ class SessionController extends Controller
             'password' => ['required', 'string', 'min:8', 'max:255'],
         ]);
 
-        if (! Auth::attempt($credentials)) {
+        if (!Auth::attempt($credentials)) {
             return back()->withErrors([
                 'password' => 'We could not verify your credentials. Please try again.',
             ])->withInput();
@@ -37,6 +37,6 @@ class SessionController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/')->with('success', 'You have been logged out successfully');
+        return redirect()->intended(route('idea.index'))->with('success', 'You have been logged out successfully');
     }
 }

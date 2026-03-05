@@ -30,5 +30,5 @@ it('updated an existing idea', function () {
             'links' => [$idea->links[0], 'https://laravel.com'],
         ])
         ->and($idea->steps)->toHaveCount(1);
-    
+
 });

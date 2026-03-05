@@ -14,5 +14,4 @@ class IdeaPolicy
     {
         return $idea->user->is($user); // Verifica se o usuário é o dono da ideia
     }
-
 }
