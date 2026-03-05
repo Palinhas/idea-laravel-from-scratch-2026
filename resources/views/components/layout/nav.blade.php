@@ -10,9 +10,10 @@
         <div class="flex gap-x-5 items-center">
             {{-- Right side --}}
             @auth
+                <a href="{{ route('profile.edit') }}" class="btn-outlined">Edit Profile</a>
                 <form action="/logout" method="post">
                     @csrf
-                    <button type="submit" class="" data-test="logout-button">Logout</button>
+                    <button type="submit" class="btn-outlined" data-test="logout-button">Logout</button>
                 </form>
 
             @endauth
